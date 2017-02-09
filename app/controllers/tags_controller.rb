@@ -1,6 +1,4 @@
-class UsersController < ApplicationController
+class TagsController < ApplicationController
   # include Concerns::InstanceMethods
   # extend Concerns::ClassMethods
-  
-  # has_secure_password
 end

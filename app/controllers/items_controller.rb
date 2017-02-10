@@ -8,4 +8,14 @@ class ItemsController < ApplicationController
       redirect '/signup'
     end
   end
+
+  get '/items/:id' do 
+    if logged_in?
+      @item = Item.find_by_id(params[:id])
+      erb :'items/show'
+    else
+      redirect '/login'
+    end
+  end
+
 end

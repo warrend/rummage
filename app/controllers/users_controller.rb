@@ -35,14 +35,10 @@ class UsersController < ApplicationController
   end
 
   post '/login' do 
-    if params[:email] == '' || params[:password] == ''
-      redirect '/login'
-    else
-      @user = User.find_by(email: params[:email])
-      if @user && @user.authenticate(password: params[:password])
-        session[:user_id] = @user.id
-        redirect '/items'
-      end
+    user = User.find_by(email: params[:email])
+    if user && user.authenticate(params[:password])
+      session[:user_id] = user.id
+      redirect '/items'
     else
       redirect '/login'
     end

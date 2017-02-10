@@ -1,4 +1,4 @@
-<h1>Welcome, <%= @user.username %>!</h1>
+<h1>Welcome, <a href="/users/<%= @user.slug %>"><%= @user.username %></a>!</h1>
 <h2><a href="/items/new">Add a New Item</a></h2>
 <h3>List of the latest posted items</h3>
 <% @items.each do |item| %>
@@ -6,3 +6,4 @@
     <p><a href="/items/<%= item.id %>"><%= item.name %></a><p>
   </div>
 <% end %>
+<p><a href="/logout">Logout</a></p>

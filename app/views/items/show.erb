@@ -2,3 +2,7 @@
 <h2>Location: <%= @item.location %></h2>
 <p>Description: <%= @item.description %></p>
 <p>Posted by <%= @item.user.username %></p>
+<% if @item.user.id == @user.id %>
+  <a href="/items/<%= @item.id %>/edit">Edit item</a>
+  <a href="/items/<%= @item.id %>/delete">Delete item</a>
+<% end %>

@@ -1,0 +1,23 @@
+<h1>Add an Item</h1>
+<form action="/new" method="post">
+  <label for="name">Name of Item</label><br>
+  <input type="text" id="name" name="name"><br>
+  <label for="description">Description</label><br>
+  <input type="text" id="description" name="description"><br>
+  <label for="location">Location</label><br>
+  <input type="text" id="location" name="location"><br>
+  <br>
+  <label for="tag">Select from a tag below</label><br>
+  <select>
+    <option>Choose one or create new</option>
+  <% @tags.each do |tag| %>
+    <option value="<%= tag.id %>" name="tag_id"><%= tag.name %></option>
+  <% end %> 
+  </select>
+  <br>
+  <br>
+  <label>Create a New Tag</label><br>
+  <input type="text" name="tag_id"><br>
+  <br>
+  <input type="submit" value="submit">
+</form>

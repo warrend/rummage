@@ -1,12 +1,17 @@
 <h1><%= @user.username %></h1>
-<% @user.items.each do |item| %>
-  <div>
-    <h2><a href="/items/<%= item.id %>"><%= item.name %></a></h2>
-    <p><%= item.description %></p>
-    <p><%= item.location %></p>
-    <% if @user.id == current_user.id %>
-      <a href="/items/<%= item.id %>/edit">Edit item</a>
-      <a href="/items/<%= item.id %>/delete">Delete item</a>
-    <% end %>
-  </div>
+<% if @user.items.empty? %>
+  <p>This user hasn't posted any items.</p>
+  <p>Click<a href="/items"> here</a> to go back to available items.</p>
+<% else %>
+  <% @user.items.each do |item| %>
+    <div>
+      <h2><a href="/items/<%= item.id %>"><%= item.name %></a></h2>
+      <p><%= item.description %></p>
+      <p><%= item.location %></p>
+      <% if @user.id == current_user.id %>
+        <a href="/items/<%= item.id %>/edit">Edit item</a>
+        <a href="/items/<%= item.id %>/delete">Delete item</a>
+      <% end %>
+    </div>
+  <% end %>
 <% end %>

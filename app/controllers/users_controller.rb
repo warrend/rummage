@@ -19,6 +19,9 @@ class UsersController < ApplicationController
   post '/signup' do 
     if params[:username] == '' || params[:email] == '' || params[:password] == ''
       redirect '/signup'
+    elsif User.find_by(username: params[:username]) || User.find_by(email: params[:email])
+      flash[:message] = "This username and/or password already exists!"
+      redirect '/signup'
     else
       @user = User.create(username: params[:username], email: params[:email], password: params[:password])
       session[:user_id] = @user.id
@@ -40,6 +43,7 @@ class UsersController < ApplicationController
       session[:user_id] = user.id
       redirect '/items'
     else
+      flash[:message] = "The email or password is incorrect!"
       redirect '/login'
     end
   end

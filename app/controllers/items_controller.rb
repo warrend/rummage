@@ -37,11 +37,17 @@ class ItemsController < ApplicationController
       redirect '/items/new'
     else
       @user = current_user
-      @item = @user.new(name: params[:name], description: params[:description], location: [:location])
-      
+      @item = @user.items.build(name: params[:name], description: params[:description], location: params[:location])
+      if tag = Tag.find_by(name: params[:tag])
+        @item.tag = tag 
+      else
+        tag = Tag.new(name: params[:tag])
+        @item.tag = tag
+      end
+      @item.save
       @user.save
 
-      redirect "/tweets/#{@tweet.id}"
+      redirect "/items/#{@item.id}"
     end
   end
 

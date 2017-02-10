@@ -1,9 +1,8 @@
 <h1>Welcome, <%= @user.username %>!</h1>
 <h2><a href="/items/new">Add a New Item</a></h2>
-<h3>List of your current items</h3>
-<% @user.items.each do |item| %>
+<h3>List of the latest posted items</h3>
+<% @items.each do |item| %>
   <div>
     <p><a href="/items/<%= item.id %>"><%= item.name %></a><p>
-    <p><a href="/items/<%= item.id %>/delete">delete this item</a></p>
   </div>
 <% end %>

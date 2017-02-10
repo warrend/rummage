@@ -1,6 +1,12 @@
-<h1>Here are all of the items for <%= @user.username %></h1>
+<h1><%= @user.username %></h1>
 <% @user.items.each do |item| %>
   <div>
-    <a href="/items/<%= item.id %>"><%= item.name %></a>
+    <h2><a href="/items/<%= item.id %>"><%= item.name %></a></h2>
+    <p><%= item.description %></p>
+    <p><%= item.location %></p>
+    <% if @user.id == current_user.id %>
+      <a href="/items/<%= item.id %>/edit">Edit item</a>
+      <a href="/items/<%= item.id %>/delete">Delete item</a>
+    <% end %>
   </div>
 <% end %>

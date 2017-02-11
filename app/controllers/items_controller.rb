@@ -36,7 +36,7 @@ class ItemsController < ApplicationController
   get '/items/:id/edit' do 
     if logged_in? 
       @item = Item.find_by_id(params[:id])
-      erb :':items/edit'
+      erb :'items/edit'
     else
       redirect '/login'
     end

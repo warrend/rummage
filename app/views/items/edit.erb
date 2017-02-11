@@ -1,0 +1,16 @@
+<h1>Edit an Item</h1>
+<form action="/new" method="post">
+  <label for="name">Name of Item</label><br>
+  <input type="text" id="name" name="name" value="<%= @item.name %>"><br>
+  <label for="description">Description</label><br>
+  <input type="text" id="description" name="description" value="<%= @item.description %>"><br>
+  <label for="location">Location</label><br>
+  <input type="text" id="location" name="location" value="<%= @item.location %>"><br>
+  <br>
+  <label for="tag">Add a Tag</label><br>
+  <input type="text" name="tag" id="tag" value="<%= @item.tag.name %>"><br>
+  <br>
+  <input type="submit" value="edit">
+</form>
+
+<p><a href="/items">Back to items</a></p>

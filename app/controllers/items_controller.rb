@@ -23,8 +23,11 @@ class ItemsController < ApplicationController
   get '/items/:id' do 
     if logged_in?
       @user = current_user
-      @item = Item.find_by_id(params[:id])
-      erb :'items/show'
+      if @item = Item.find_by_id(params[:id])
+        erb :'items/show'
+      else
+        redirect '/items'
+      end
     else
       redirect '/login'
     end
@@ -50,5 +53,23 @@ class ItemsController < ApplicationController
       redirect "/items/#{@item.id}"
     end
   end
+
+  patch '/items/:id' do 
+    
+  end
+
+  delete '/items/:id' do 
+    if logged_in?
+      @item = Item.find_by_id(params[:id])
+      @item.delete
+      
+      redirect '/items'
+    else
+      redirect '/login'
+    end
+  end
+
+
+
 
 end

@@ -53,7 +53,7 @@ class ItemsController < ApplicationController
       if tag = Tag.find_by(name: params[:tag])
         @item.tag = tag 
       else
-        tag = Tag.new(name: params[:tag])
+        tag = Tag.new(name: params[:tag].downcase)
         @item.tag = tag
       end
       @item.save
@@ -75,9 +75,11 @@ class ItemsController < ApplicationController
       @item.tag = tag
     end
     @item.save
+
+    redirect "/items/#{@item.id}"
   end
 
-  delete '/items/:id' do 
+  delete '/items/:id/delete' do 
     if logged_in?
       @item = Item.find_by_id(params[:id])
       @item.delete

@@ -10,7 +10,10 @@
       <p><%= item.location %></p>
       <% if @user.id == current_user.id %>
         <a href="/items/<%= item.id %>/edit">Edit item</a>
-        <a href="/items/<%= item.id %>/delete">Delete item</a>
+         <form method="post" action="/items/<%= item.id %>/delete">
+          <input id="hidden" type="hidden" name="_method" value="DELETE">
+          <input type="submit" value="Delete Item">
+        </form>
       <% end %>
     </div>
   <% end %>

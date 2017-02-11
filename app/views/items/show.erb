@@ -4,6 +4,10 @@
 <p>Posted by <a href="/users/<%= @item.user.username %>"><%= @item.user.username %></a></p>
 <% if @item.user.id == @user.id %>
   <a href="/items/<%= @item.id %>/edit">Edit item</a>
-  <a href="/items/<%= @item.id %>/delete">Delete item</a>
+  <br>
+  <form method="post" action="/items/<%= @item.id %>/delete">
+    <input id="hidden" type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="Delete Item">
+  </form>
 <% end %>
 <p><a href="/items">Back to items</a></p>

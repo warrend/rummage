@@ -14,8 +14,8 @@ class ItemsController < ApplicationController
     if !logged_in?
       redirect '/login'
     else
-      @current_user = current_user
-      @tags = Tag.all
+      #@current_user = current_user
+      #@tags = Tag.all
       erb :'items/create'
     end
   end
@@ -89,8 +89,5 @@ class ItemsController < ApplicationController
       redirect '/login'
     end
   end
-
-
-
-
+  
 end

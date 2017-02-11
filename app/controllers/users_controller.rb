@@ -20,13 +20,13 @@ class UsersController < ApplicationController
   end
 
   post '/signup' do 
-    if params[:username] == '' || params[:email] == '' || params[:password] == ''
+    if params[:name] == '' || params[:email] == '' || params[:password] == ''
       redirect '/signup'
-    elsif User.find_by(username: params[:username]) || User.find_by(email: params[:email])
+    elsif User.find_by(name: params[:name]) || User.find_by(email: params[:email])
       flash[:message] = "This username and/or password already exists!"
       redirect '/signup'
     else
-      @user = User.create(username: params[:username].downcase, email: params[:email], password: params[:password])
+      @user = User.create(name: params[:name].downcase, email: params[:email], password: params[:password])
       session[:user_id] = @user.id
       redirect '/items'
     end

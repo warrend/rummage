@@ -1,13 +1,12 @@
 module Concerns
   module InstanceMethods # include
     def slug
-      #self.name.gsub(" ", "-").downcase
-      if self.username == nil
-        self.username = "No username"
-      elsif self.username.match(/\s/) == nil 
-        self.username.downcase 
+      if self.name == nil
+        self.name = "Empty"
+      elsif self.name.match(/\s/) == nil 
+        self.name.downcase 
       else
-        self.username.gsub(/[^a-z\sA-Z1-9]/, '').split.join('-').downcase
+        self.name.gsub(/[^a-z\sA-Z1-9]/, '').split.join('-').downcase
       end
     end
   end

@@ -33,6 +33,15 @@ class ItemsController < ApplicationController
     end
   end
 
+  get '/items/:id/edit' do 
+    if logged_in? 
+      @item = Item.find_by_id(params[:id])
+      erb :':items/edit'
+    else
+      redirect '/login'
+    end
+  end
+
   post '/new' do 
     if !logged_in?
       redirect '/login'
@@ -55,14 +64,24 @@ class ItemsController < ApplicationController
   end
 
   patch '/items/:id' do 
-    
+    @item = Item.find_by_id(params[:id])
+    @item.name = params[:name]
+    @item.description = params[:description]
+    @item.location = params[:location]
+    if tag = Tag.find_by(name: params[:tag])
+      @item.tag = tag 
+    else
+      tag = Tag.new(name: params[:tag])
+      @item.tag = tag
+    end
+    @item.save
   end
 
   delete '/items/:id' do 
     if logged_in?
       @item = Item.find_by_id(params[:id])
       @item.delete
-      
+
       redirect '/items'
     else
       redirect '/login'

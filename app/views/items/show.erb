@@ -1,8 +1,9 @@
 <h1><%= @item.name %></h1>
 <h2>Location: <%= @item.location %></h2>
 <p>Description: <%= @item.description %></p>
-<p>Posted by <%= @item.user.username %></p>
+<p>Posted by <a href="/users/<%= @item.user.username %>"><%= @item.user.username %></a></p>
 <% if @item.user.id == @user.id %>
   <a href="/items/<%= @item.id %>/edit">Edit item</a>
   <a href="/items/<%= @item.id %>/delete">Delete item</a>
 <% end %>
+<p><a href="/items">Back to items</a></p>

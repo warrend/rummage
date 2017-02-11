@@ -1,4 +1,7 @@
+require 'rack-flash'
+
 class UsersController < ApplicationController
+  use Rack::Flash
 
   get '/users/:slug' do 
     if logged_in? && @user = User.find_by_slug(params[:slug])
@@ -23,7 +26,7 @@ class UsersController < ApplicationController
       flash[:message] = "This username and/or password already exists!"
       redirect '/signup'
     else
-      @user = User.create(username: params[:username], email: params[:email], password: params[:password])
+      @user = User.create(username: params[:username].downcase, email: params[:email], password: params[:password])
       session[:user_id] = @user.id
       redirect '/items'
     end

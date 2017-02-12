@@ -2,9 +2,28 @@
 <html>
   <head>
     <title>Rummage</title>
-  </head>
-  <body>
-    <%= yield %>
-  </body>
+    <!--Import Google Icon Font-->
+	<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	  <!--Import materialize.css-->
+	<link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
 
+	  <!--Let browser know website is optimized for mobile-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  </head>
+  <body class="container">
+  <header>
+  	<div>
+  		<h1>Rummage</h1>
+  		<ul class="menu">
+  			<li><a href="/items"><%= current_user.name %></a></li>
+  			<li><a href="/logout">Logout</a></li>
+  		</ul>
+  	</div>
+
+  </header>
+    <%= yield %>
+
+  </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
 </html>

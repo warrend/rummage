@@ -1,1 +1,9 @@
 <h1><%= @tag.name %></h1>
+
+<p>These are the items associated with this tag:</p>
+
+<ul>
+  <% @tag.items.each do |item| %>
+    <li><a href="/items/<%= item.id %>"><%= item.name %></a></li>
+  <% end %>
+</ul>

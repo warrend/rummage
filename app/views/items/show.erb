@@ -3,11 +3,15 @@
 <p>Description: <%= @item.description %></p>
 <p>Posted by <a href="/users/<%= @item.user.name %>"><%= @item.user.name %></a></p>
 <% if @item.user.id == @user.id %>
-  <a href="/items/<%= @item.id %>/edit">Edit item</a>
   <br>
+  <form action="/items/<%= @item.id %>/edit" method="get">
+    <input type="hidden" id="hidden" name="_method" value="patch">
+    <input type="submit" value="Edit Item">
+  </form>
   <form method="post" action="/items/<%= @item.id %>/delete">
     <input id="hidden" type="hidden" name="_method" value="DELETE">
     <input type="submit" value="Delete Item">
   </form>
 <% end %>
+<p>Tags: <a href="/tags/<%= @item.tag.id %>"><%= @item.tag.name %></a></p>
 <p><a href="/items">Back to items</a></p>

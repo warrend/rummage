@@ -89,5 +89,5 @@ class ItemsController < ApplicationController
       redirect '/login'
     end
   end
-  
+
 end

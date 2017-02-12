@@ -11,10 +11,10 @@ class TagsController < ApplicationController
     end
   end
 
-  get '/tags/:slug' do 
+  get '/tags/:id' do 
     if logged_in?
       @user = current_user
-      @tag = Tag.find_by_slug(params[:slug])
+      @tag = Tag.find_by_id(params[:id])
 
       erb :'tags/show'
     else

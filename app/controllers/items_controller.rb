@@ -1,4 +1,7 @@
+require 'rack-flash'
+
 class ItemsController < ApplicationController
+  use Rack::Flash
 
   get '/items' do 
     if logged_in?
@@ -14,8 +17,6 @@ class ItemsController < ApplicationController
     if !logged_in?
       redirect '/login'
     else
-      #@current_user = current_user
-      #@tags = Tag.all
       erb :'items/create'
     end
   end
@@ -39,6 +40,7 @@ class ItemsController < ApplicationController
       if @item.user_id == current_user.id
         erb :'items/edit'
       else
+        flash[:message] = "You can only edit your own posts!"
         redirect '/login'
       end
     end
@@ -88,6 +90,7 @@ class ItemsController < ApplicationController
 
       redirect '/items'
     else
+      flash[:message] = "You can only delete your own posts"
       redirect '/login'
     end
   end

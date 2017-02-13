@@ -11,6 +11,15 @@ class UsersController < ApplicationController
     end
   end 
 
+  get '/users' do 
+    if logged_in?
+      @users = User.all
+      erb :'users/index'
+    else
+      redirect '/login'
+    end
+  end
+
   get '/signup' do 
     if !logged_in?
       erb :'users/create'

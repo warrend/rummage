@@ -17,9 +17,10 @@
   	<p>Find it on the streets of NYC</p>
 		<ul class="menu">
 			<% if logged_in? %>
-				<li><a href="/users/<%= current_user.name %>"><%= current_user.name.capitalize %></a></li>
+				<li><a href="/users/<%= current_user.name %>">Logged in as <%= current_user.name.capitalize %></a></li>
 				<li><a href="/logout">Logout</a></li>
 				<li><a href="/items">Public items</a></li>
+				<li><a href="/users">Check out other users</a></li>
 			<% end %>
 		</ul>
 	

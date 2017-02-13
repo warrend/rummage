@@ -24,4 +24,6 @@
     </div>
   <% end %>
 <% end %>
-<p><a href="/items">Back to items</a></p>
+<% if !@user.items.empty? %>
+  <p><a href="/items">Back to items</a></p>
+<% end %>

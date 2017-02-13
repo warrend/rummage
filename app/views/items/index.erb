@@ -5,7 +5,7 @@
 <p><a href="/items/new">Add a New Item</a></p>
 <p><a href="/tags">Find by Tag</a></p>
 <h3>List of the latest posted items</h3>
-<% @items.each do |item| %>
+<% @items.reverse.each do |item| %>
   <div class="card-panel light-blue darken-1 z-depth-0">
     <h5><a class="white-text" href="/items/<%= item.id %>"><%= item.name %></a></h5>
   </div>

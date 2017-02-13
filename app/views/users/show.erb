@@ -4,7 +4,7 @@
   <p>Click<a href="/items"> here</a> to go back to available items.</p>
 <% else %>
   <% @user.items.each do |item| %>
-    <div>
+    <div class="card-panel grey lighten-3 z-depth-0">
       <h2><a href="/items/<%= item.id %>"><%= item.name %></a></h2>
       <p><%= item.description %></p>
       <p><%= item.location %></p>
@@ -14,7 +14,7 @@
           <input type="hidden" id="hidden" name="_method" value="patch">
           <input type="submit" value="Edit Item">
         </form>
-
+        <br>
         <form method="post" action="/items/<%= item.id %>/delete">
           <input id="hidden" type="hidden" name="_method" value="DELETE">
           <input type="submit" value="Delete Item">

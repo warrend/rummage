@@ -8,12 +8,12 @@
   <br>
   <form action="/items/<%= @item.id %>/edit" method="get">
     <input type="hidden" id="hidden" name="_method" value="patch">
-    <input type="submit" value="Edit Item">
+    <input type="submit" value="Edit Item" class="waves-effect waves-light btn">
   </form>
   <br>
   <form method="post" action="/items/<%= @item.id %>/delete">
     <input id="hidden" type="hidden" name="_method" value="DELETE">
-    <input type="submit" value="Delete Item">
+    <input type="submit" value="Delete Item" class="waves-effect waves-light btn">
   </form>
 <% end %>
 <p>Tags: <a href="/tags/<%= @item.tag.id %>"><%= @item.tag.name %></a></p>

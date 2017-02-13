@@ -1,7 +1,7 @@
 <h1>Select a Tag</h1>
 <ul>
 <% @tags.each do |tag| %>
-  <li><a href="/tags/<%= tag.slug %>"><%= tag.name %></a></li>
+  <li><a href="/tags/<%= tag.id %>"><%= tag.name %></a></li>
 <% end %>
 </ul>
 <p><a href="/items">Back to items</a></p>

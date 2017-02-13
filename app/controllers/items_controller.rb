@@ -7,6 +7,7 @@ class ItemsController < ApplicationController
     if logged_in?
       @user = current_user
       @items = Item.all
+
       erb :'items/index'
     else
       redirect '/signup'

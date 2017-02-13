@@ -1,3 +1,4 @@
+<div class="clearfix">
 <h1><%= @user.name.capitalize %>'s Items</h1>
 <% if @user.items.empty? %>
   <p>This user hasn't posted any items.</p>
@@ -27,3 +28,4 @@
 <% if !@user.items.empty? %>
   <p><a href="/items">Back to items</a></p>
 <% end %>
+</div>

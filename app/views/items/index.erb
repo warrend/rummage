@@ -1,9 +1,13 @@
 <% if flash.has?(:message) %>
   <p><%= flash[:message] %></p>
 <% end %>
-<h1>Welcome, <a href="/users/<%= @user.slug %>"><%= @user.name.capitalize %></a>!</h1>
-<p><a href="/items/new">Add a New Item</a></p>
-<h3>List of the latest posted items</h3>
+<div class="clearfix">
+	<div class="clearfix">
+	<h1>Welcome, <a href="/users/<%= @user.slug %>"><%= @user.name.capitalize %></a>!</h1>
+	<p><a href="/items/new">Add a New Item</a></p>
+	<h3>List of the latest posted items</h3>
+	</div>
+
 <% @items.reverse.each do |item| %>
   <div class="row">
 	  <div class="card-panel light-blue darken-1 z-depth-0 col s8">
@@ -12,6 +16,8 @@
 	  </div>
   </div>
 <% end %>
+
+</div>
 
 
 

@@ -19,8 +19,10 @@
 			<% if logged_in? %>
 				<li><a href="/users/<%= current_user.name %>">Logged in as <%= current_user.name.capitalize %></a></li>
 				<li><a href="/logout">Logout</a></li>
+				<br>
 				<li><a href="/items">Public items</a></li>
 				<li><a href="/users">Check out other users</a></li>
+				<li><a href="/tags">Find by Tag</a></li>
 			<% end %>
 		</ul>
 	

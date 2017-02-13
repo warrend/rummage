@@ -3,7 +3,6 @@
 <% end %>
 <h1>Welcome, <a href="/users/<%= @user.slug %>"><%= @user.name.capitalize %></a>!</h1>
 <p><a href="/items/new">Add a New Item</a></p>
-<p><a href="/tags">Find by Tag</a></p>
 <h3>List of the latest posted items</h3>
 <% @items.reverse.each do |item| %>
   <div class="row">

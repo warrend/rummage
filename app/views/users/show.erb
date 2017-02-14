@@ -4,7 +4,7 @@
   <p>This user hasn't posted any items.</p>
   <p>Click<a href="/items"> here</a> to go back to available items.</p>
 <% else %>
-  <% @user.items.each do |item| %>
+  <% @user.items.reverse.each do |item| %>
     <div class="card-panel grey lighten-3 z-depth-0">
       <h2><a href="/items/<%= item.id %>"><%= item.name %></a></h2>
       <p><%= item.description %></p>

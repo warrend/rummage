@@ -47,8 +47,6 @@ class ItemsController < ApplicationController
     end
   end
 
-  # Forms_revision branch
-
   post '/new' do 
     if !logged_in?
       redirect '/login'

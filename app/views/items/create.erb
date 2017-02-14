@@ -1,14 +1,14 @@
 <h1>Add an Item</h1>
 <form action="/new" method="post">
-  <label for="name">Name of Item</label><br>
-  <input type="text" id="name" name="name"><br>
+  <label for="item">Name of Item</label><br>
+  <input type="text" id="name" name="item[name]"><br>
   <label for="description">Description</label><br>
-  <input type="text" id="description" name="description"><br>
+  <input type="text" id="description" name="item[description]"><br>
   <label for="location">Location</label><br>
-  <input type="text" id="location" name="location"><br>
+  <input type="text" id="location" name="item[location]"><br>
   <br>
   <label for="tag">Add a Tag</label><br>
-  <input type="text" name="tag" id="tag"><br>
+  <input type="text" name="tag[name]" id="tag"><br>
   <br>
   <input type="submit" value="submit" class="waves-effect waves-light btn">
 </form>

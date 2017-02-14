@@ -47,22 +47,29 @@ class ItemsController < ApplicationController
     end
   end
 
+  # Forms_revision branch
+
   post '/new' do 
     if !logged_in?
       redirect '/login'
-    elsif params[:name] == '' || params[:description] == '' || params[:location] == ''
+    elsif params[:item][:name] == '' || params[:item][:description] == '' || params[:item][:location] == ''
       redirect '/items/new'
     else
+      
       @user = current_user
-      @item = @user.items.build(name: params[:name], description: params[:description], location: params[:location])
-      if tag = Tag.find_by(name: params[:tag])
-        @item.tag = tag 
+      @item = Item.new(name: params[:item][:name], description: params[:item][:description], location: params[:item][:location])
+      
+      if @tag = Tag.find_by(name: params[:tag][:name])
+        @item.tag = @tag 
       else
-        tag = Tag.new(name: params[:tag].downcase)
-        @item.tag = tag
+        @tag = Tag.new(name: params[:tag][:name].downcase)
+        @item.tag = @tag
       end
+      
+      @tag.items << @item
+      @user.items << @item
+    
       @item.save
-      @user.save
 
       redirect "/items/#{@item.id}"
     end
